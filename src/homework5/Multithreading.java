@@ -1,5 +1,7 @@
 package homework5;
 
+import java.util.Arrays;
+
 public class Multithreading {
     public static final int SIZE = 10000000;
     public static final int HALF = SIZE / 2;
@@ -22,6 +24,7 @@ public class Multithreading {
         }
         long after = System.currentTimeMillis();
         System.out.println("Время без использования многопоточности: " + (after - before));
+
     }
 
     private static void doWithMultithreading() {
@@ -46,9 +49,9 @@ public class Multithreading {
         Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < HALF; i++) {
-                    float f = (float) i;
-                    arr2[i] = (float) (arr2[i] * Math.sin(0.2f + f / 5) * Math.cos(0.2f + f / 5) * Math.cos(0.4f + f / 2));
+                float z=HALF;
+                for (int i = 0; i < HALF; i++,z++) {
+                    arr2[i] = (float) (arr2[i] * Math.sin(0.2f + z / 5) * Math.cos(0.2f + z / 5) * Math.cos(0.4f + z / 2));
                 }
             }
         });
@@ -64,5 +67,6 @@ public class Multithreading {
         System.arraycopy(arr2, 0, array, HALF, HALF);
         long after = System.currentTimeMillis();
         System.out.println("Время с использованием многопоточности:" + (after - before));
+
     }
 }
