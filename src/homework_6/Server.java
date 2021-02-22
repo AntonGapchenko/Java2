@@ -16,7 +16,7 @@ public class Server {
     private DataOutputStream out;
 
 
-    Server() {
+   public Server() {
         try {
             serverSocket = new ServerSocket(PORT);
             System.out.println("Сервер ожидает клиента...");
